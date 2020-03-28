@@ -61,7 +61,7 @@ public class Person {
         this.birthday = birthday;
     }
 
-    public int getHome_id() {
+    public Integer getHome_id() {
         return home_id;
     }
 
