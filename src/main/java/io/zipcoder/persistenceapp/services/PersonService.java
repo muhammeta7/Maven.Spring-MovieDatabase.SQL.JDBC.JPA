@@ -61,21 +61,6 @@ public class PersonService {
         return jdbcTemplate.query(sql, new PersonMapper(), mobile);
     }
 
-    // TODO: remove a list of people from the database
-//    public int[] removeListOfPeople(List<Person> people) {
-//        String DELETE_LIST_OF_PEOPLE="DELETE FROM person WHERE last_name = ? AND first_name = ? AND mobile = ? AND birthday = ?";
-//        List<Object[]> personFields = new LinkedList<>();
-//        for(Person person: people){
-//            Object[] fields = new Object[4];
-//            fields[0] = person.getLast_name();
-//            fields[1] = person.getFirst_name();
-//            fields[2] = person.getMobile();
-//            fields[3] = person.getBirthday();
-//            personFields.add(fields);
-//        }
-//        return jdbcTemplate.batchUpdate(DELETE_LIST_OF_PEOPLE, personFields);
-//    }
-
     // find all people with a particular first name
     public List<Person> findAllWithFirstName(String firstName){
         String sql = "SELECT * FROM PERSON WHERE first_name = ?;";
@@ -94,7 +79,7 @@ public class PersonService {
         return jdbcTemplate.query(sql, new PersonMapper(), bday);
     }
 
-    // TODO: Generate a map of surnames to lists of people with that surname
+    // Generate a map of surnames to lists of people with that surname
     public Map<String,ArrayList<Person>> getSurnameMap() {
         Map<String, ArrayList<Person>> map = new HashMap<>();
         List<Person> people = showAll();
@@ -112,7 +97,7 @@ public class PersonService {
         return map;
     }
 
-    // TODO: Generate a map of first names to the number of times they occur.
+    // Generate a map of first names to the number of times they occur.
     public Map<String, Integer> getFirstNameMap(){
         Map<String, Integer> map = new HashMap<>();
         Person[] people = showAll().stream().toArray(Person[]::new);

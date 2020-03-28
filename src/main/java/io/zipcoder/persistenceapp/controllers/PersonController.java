@@ -1,5 +1,6 @@
 package io.zipcoder.persistenceapp.controllers;
 
+import io.zipcoder.persistenceapp.jbdc.JdbcPersonServiceImpl;
 import io.zipcoder.persistenceapp.models.Person;
 import io.zipcoder.persistenceapp.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,11 @@ import java.util.Map;
 public class PersonController {
 
     @Autowired
-    private PersonService ps;
+    JdbcPersonServiceImpl ps;
+
+    public PersonController(JdbcPersonServiceImpl service){
+        this.ps = service;
+    }
 
     // GET /people/{id} -- get the person with the specified ID
     @GetMapping("/people/{id}")
